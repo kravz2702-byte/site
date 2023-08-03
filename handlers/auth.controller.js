@@ -31,15 +31,16 @@ export const signin = (req,res) => {
         email: req.body.email
     }).then( user =>{
         //Comparing passwords
+        try{
         var passwordIsValid = bcrypt.compareSync(
             req.body.password,
             user.password
-        )
+        )}
+        catch {
+            return res.render('login_page', {message: 'Wrong EMAIL or PASSWORD'})
+        }
         if (!passwordIsValid) {
-            return res.status(401).send({
-                accessToken: null,
-                message: "Invalid Password!"
-            })
+            return res.render('login_page', {message: 'Wrong EMAIL or PASSWORD'})
         }
         //Signing token with user id
         var token = jwt.sign({

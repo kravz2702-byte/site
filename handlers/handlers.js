@@ -15,6 +15,8 @@ export const course = (req, res) => res.render('course')
 
 export const login = (req, res) => res.render('login_page')
 
+export const create_post = (req, res) => res.render('create_post')
+
 export const logout = (req, res) => {
     res.cookie('access_token', '')
     res.redirect('/')
@@ -27,3 +29,4 @@ export const profile = (req, res) => {
     })
     res.render('profile', {layout:'profile'})
 }
+

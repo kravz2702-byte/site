@@ -63,13 +63,15 @@ app.get('/logout', handlers.logout)
 
 app.get('/profile/:username', handlers.profile)
 
+app.get('/create_post', handlers.create_post)
+
 app.use(express.static(__dirname + '/public'))
 
-
-
-
-
-
+// TODO: 
+// 1)replace ckeditor with tinymce
+// 2)add to database
+// 3)handle and display all courses
+// 4)Cosmetic corrects
 
 
 
