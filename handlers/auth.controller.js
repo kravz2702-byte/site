@@ -1,10 +1,9 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import User from '../models/user.js'
+import {User} from '../models/models.js'
 import 'dotenv/config'
 
 export const signup = (req,res) => {
-    console.log("PASSWORD", req.body.password)
     const user = new User({
         username: req.body.username,
         email: req.body.email,
