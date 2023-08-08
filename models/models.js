@@ -63,6 +63,9 @@ const PostSchema = new Schema({
     },
     otherFiles: {
         type: String
+    },
+    owner: {
+        type: String
     }
 })
 

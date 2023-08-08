@@ -24,7 +24,8 @@ export const upload_data = (req, res) => {
     const post = new Post({
         title: req.body.title,
         body: req.body.postText,
-        videoPath: path.join('uploads', req.file.filename)
+        videoPath: path.join('uploads', req.file.filename),
+        owner: req.cookies.username
     })
     post.save()
         .then(post=>console.log(post.title))
