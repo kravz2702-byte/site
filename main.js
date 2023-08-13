@@ -47,6 +47,9 @@ app.engine('handlebars', expressHandlebars.engine({
             if(!this._sections) this._sections = {}
             this._sections[name] = options.fn(this)
             return null
+        },
+        dateFormat: function(date){
+            return date.toLocaleDateString('RU')
         }
     }
 }))
@@ -63,17 +66,18 @@ app.use(express.static(__dirname + '/public'))
 
 
 
-app.get('/courses', verifyToken, handlers.course)
-
 app.get('/signIn', handlers.login)
 
 app.get('/logout', handlers.logout)
 
 app.get('/profile/:username', handlers.profile)
 
-app.post('/upload_data', upload.single('my-video'), handlers.upload_data)
+app.post('/upload_data/:id', upload.single('my-video'), handlers.upload_data)
 
-app.get('/create_post', handlers.create_post)
+app.post('/upload_course', handlers.upload_course)
+
+app.post('/lesson', handlers.save_comment)
+
 // TODO: 
 // 1) Complete create_post.handlers
 // 2) render create_post.handlers
